@@ -1,5 +1,5 @@
 module.exports = {
-   mongoURI: 'mongodb://admin:admin123@ds263520.mlab.com:63520/website_db',
+   mongoURI: 'mongodb+srv://ynewayne:400carrots#12@talentconnect.l58ln7n.mongodb.net/?retryWrites=true&w=majority&appName=talentconnect',
    secretOrKey: 'secret'
 };
 
