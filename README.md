@@ -74,4 +74,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any inquiries, please reach out to Samson Wayne Muhadia at smuhadia4@gmail.com or Mba Sopuluchukwu at 8888@888.com
+For any inquiries, please reach out to Samson Wayne Muhadia at smuhadia4@gmail.com or Mba Sopuluchukwu at urealsean12@gamil.com
