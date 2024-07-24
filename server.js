@@ -1,64 +1,49 @@
-var express = require('express');
-var mongoose = require('mongoose');
-const app = express();
-const db = require('./config/keys').mongodb+srv://ynewayne:<password>@talentconnect.l58ln7n.mongodb.net/?retryWrites=true&w=majority&appName=talentconnect;
-var bodyParser = require('body-parser');
-var passport = require('passport');
-var path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const path = require('path');
+const cookieSession = require('cookie-session');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
-
 const keys = require('./config/keys');
-require('./models/UserG');
-require('./routes/services/passport');
-const cookieSession = require('cookie-session');
 
+const app = express();
 
-
-//Body Parser middleware
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false}));
-// parse application/json
+// Body Parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-// Connect to MongoDb
+// Connect to MongoDB
 mongoose
-  .connect(db)
-  .then(() => console.log('MongoDb Connected'))
+  .connect(keys.mongodbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
-
 
 // Passport Middleware
 app.use(passport.initialize());
-
+app.use(passport.session());
 
 // Passport Config
 require('./config/passport')(passport);
+
+// Cookie Session middleware
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    keys: [keys.cookieKey]
+  })
+);
 
 // Use Routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-
-app.use(
-  cookieSession({
-    maxAge: 30*24*60*60*1000,
-    keys: [keys.cookieKey]
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-//require('./routes/api/authgoogle')(app);
-
-
-// Server static assests if in production
-if(process.env.NODE_ENV === 'production'){
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
 
@@ -67,8 +52,8 @@ if(process.env.NODE_ENV === 'production'){
   });
 }
 
+// Start the server
 const port = process.env.PORT || 5000;
-
-app.listen(port, function(){
-  console.log('App listening to port 3000');
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
 });
