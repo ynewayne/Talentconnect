@@ -32,31 +32,15 @@ Ensure you have the following installed on your development machine:
 - Git
 
 ### Installation
-
-1. **Clone the Repository**:
-   ```sh
-   git clone https://github.com/your-username/talentconnect.git
    cd talentconnect
    ```
+  - npm install
+  - cd client
+  - npm install
+  - cd ..
+  - npm run dev
 
-2. **Set Up Front-End**:
-   ```sh
-   cd frontend
-   npm install
-   npm start
-   ```
 
-3. **Set Up Back-End**:
-   ```sh
-   cd backend
-   npm install
-   npm start
-   ```
-
-### Running the Application
-
-1. **Front-End**: Runs on `http://localhost:3000`
-2. **Back-End**: Runs on `http://localhost:5000`
 
 ## Contributing
 
