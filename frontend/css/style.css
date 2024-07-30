@@ -1,0 +1,92 @@
+/* General styles */
+img {
+  width: 100%;
+}
+
+.landing {
+  position: relative;
+  background: url('../img/showcase.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(52, 58, 64, 0.8); /* Dark gray (near black) with transparency */
+  transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+  background-color: rgba(52, 58, 64, 1); /* Solid dark gray on hover */
+}
+
+.navbar-brand, .nav-link {
+  color: #ffffff !important; /* White text for navbar brand and links */
+}
+
+.nav-link:hover {
+  color: #007bff !important; /* Blue hover effect for navbar links */
+}
+
+/* Login Form */
+.login {
+  background-color: #ffffff; /* White background for login form */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-info {
+  background-color: #007bff; /* Blue button */
+  border-color: #007bff; /* Blue border */
+}
+
+.btn-info:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #0056b3; /* Darker blue border on hover */
+}
+
+/* Footer */
+footer {
+  background-color: rgba(52, 58, 64, 0.8); /* Dark gray (near black) with transparency */
+  color: #ffffff; /* White text for footer */
+  transition: background-color 0.3s ease;
+}
+
+footer:hover {
+  background-color: rgba(52, 58, 64, 1); /* Solid dark gray on hover */
+}
+
+/* Other styles */
+body {
+  background-color: #f8f9fa; /* Light gray background */
+}
