@@ -1,37 +1,25 @@
-var passport = require('passport');
-module.exports = app => {
-app.get('/api/authgoogle',
-passport.authenticate('google', {
-scope: ['profile', 'email']
-})
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+
+// @route   GET auth/google
+// @desc    Auth with Google
+// @access  Public
+router.get(
+  '/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-app.get('/api/authgoogle/callback',
-passport.authenticate('google'),
-(req, res) => {
-axios
-.get('/api/profile/all')
-.then(res =>
-dispatch({
-type: GET_PROFILES,
-payload: res.data
-})
-)
-res.redirect('/api/profile/all');
-console.log(req);
-console.log(res);
-res.redirect('/api/profile/all');
-res.render("/profiles");
-res.render(<h1>Can you see me?</h1>);
-}
+// @route   GET auth/google/callback
+// @desc    Google auth callback
+// @access  Public
+router.get(
+  '/google/callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    // Successful authentication, redirect home or dashboard
+    res.redirect('/dashboard');
+  }
 );
 
-app.get('/api/logout', (req, res) => {
-req.logout();
-res.send(req.user);
-});
-
-app.get('/api/current_user', (req, res) => {
-res.send(req.user);
-});
-};
+module.exports = router;
